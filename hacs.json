@@ -1,0 +1,12 @@
+{
+  "name": "Alephium Price",
+  "render_readme": true,
+  "domains": ["sensor"],
+  "homeassistant": "2024.12.0",
+  "zip_release": true,
+  "filename": "alephium_price.zip",
+  "hide_default_branch": true,
+  "country": ["ALL"],
+  "iot_class": "Cloud Polling",
+  "hacs": "1.6.0"
+} 
