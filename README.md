@@ -58,7 +58,41 @@ The integration creates a sensor with the following attributes:
   - `blockchain`: Blockchain (Alephium)
   - `data_source`: Source of the data (diadata.org)
   - `last_updated`: Timestamp of the last data update
+  - `color`: Dynamic color code based on 24-hour price change
+    - Starts with blue (#0000FF) as the default
+    - Smoothly transitions to red for price decreases (up to -2%)
+    - Smoothly transitions to green for price increases (up to +2%)
+    - Color intensity reflects the magnitude of the price change
 
 ## Update Frequency
 
-By default, the sensor data is updated every 5 minutes. 
+By default, the sensor data is updated every 5 minutes.
+
+## Example Automations
+
+### Price Change Light Indicator
+This automation changes the color of a smart light based on the Alephium price movement. Add this to your `automations.yaml` file:
+
+```yaml
+alias: "Alephium Price Light Indicator"
+description: "Changes light color based on ALPH price movement"
+trigger:
+  - platform: state
+    entity_id: sensor.alephium_price
+action:
+  - service: light.turn_on
+    target:
+      entity_id: light.your_light  # Replace with your light entity
+    data:
+      rgb_color: >
+        {% set color = state_attr('sensor.alephium_price', 'color') %}
+        {% set rgb = color[1:] | regex_findall('..') | map('int', 16) | list %}
+        {{ rgb }}
+      brightness: 255
+mode: single
+```
+
+Replace `light.your_light` with your actual light entity ID. The light will now:
+- Turn green when price increases (brighter green = bigger increase)
+- Turn red when price decreases (brighter red = bigger decrease)
+- Show blue when price is unchanged or on startup 
