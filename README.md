@@ -1,6 +1,13 @@
 # Alephium Price Integration for Home Assistant
 
-This custom integration for Home Assistant fetches the current price of Alephium (ALPH) cryptocurrency from the DIA API and creates a sensor with price data and additional attributes.
+Home Assistant integration that provides real-time Alephium (ALPH) cryptocurrency price tracking. This custom component creates a sensor that fetches price data from the DIA Oracle, enabling price monitoring and automation triggers based on ALPH market values. Perfect for crypto enthusiasts who want to integrate Alephium price tracking into their home automation workflows.
+
+## Features
+• Real-time ALPH/USD price updates
+• Data sourced from DIA Oracle for reliability
+• Configurable update intervals
+• Price change notifications (when used with automations)
+• Easy integration with Home Assistant dashboards
 
 ## Installation
 
