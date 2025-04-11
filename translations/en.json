@@ -1,0 +1,14 @@
+{
+  "config": {
+    "title": "Alephium Price",
+    "step": {
+      "user": {
+        "title": "Alephium Price",
+        "description": "Set up Alephium Price integration to track ALPH price data."
+      }
+    },
+    "abort": {
+      "already_configured": "Alephium Price integration is already configured."
+    }
+  }
+} 
